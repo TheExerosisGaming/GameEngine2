@@ -13,13 +13,13 @@ public interface Arena {
 
     boolean canJoin(Player player);
 
-    Player addPlayer(Player player);
+    boolean addPlayer(Player player);
 
-    Player removePlayer(Player player);
+    boolean removePlayer(Player player);
 
     Collection<Player> getPlayers();
 
-    boolean hasPlayer();
+    boolean hasPlayer(Player player);
 
     void broadcast(String message);
 
