@@ -1,8 +1,5 @@
 package me.exerosis.gameengine.modules;
 
-import lombok.Getter;
-import lombok.Setter;
-
 /**
  * Written by Exerosis!
  *
@@ -10,9 +7,9 @@ import lombok.Setter;
  * @see SchedulerModule
  */
 public class TaskData {
-    @Getter @Setter protected long lastTickTime;
-    @Getter @Setter protected double delay;
-    @Getter @Setter protected int repeatTimes;
+    protected long lastTickTime;
+    protected double delay;
+    protected int repeatTimes;
 
     public TaskData(double delay, int repeatTimes) {
         this.delay = delay;
@@ -21,5 +18,17 @@ public class TaskData {
 
     public long getNextTickTime() {
         return lastTickTime + (long) delay;
+    }
+
+    public long getLastTickTime() {
+        return lastTickTime;
+    }
+
+    public double getDelay() {
+        return delay;
+    }
+
+    public int getRepeatTimes() {
+        return repeatTimes;
     }
 }
