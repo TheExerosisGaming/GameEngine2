@@ -1,5 +1,9 @@
 package me.exerosis.gameengine.utils;
 
+import org.bukkit.Bukkit;
+import org.bukkit.WorldCreator;
+import org.bukkit.WorldType;
+
 import java.io.File;
 
 /**
@@ -19,7 +23,7 @@ public class UtilitiesWorld {
         if(!worldData.exists())
             System.err.println("[UtilitiesWorld]Failed to load world! Could not find expected 'level.dat' in directory '" file.getPath() + "'.");
 
-        WorldCreator worldCreator = new WorldCreator(getName());
+        WorldCreator worldCreator = new WorldCreator("");
         worldCreator.type(WorldType.FLAT);
         Bukkit.createWorld(worldCreator);
     }
