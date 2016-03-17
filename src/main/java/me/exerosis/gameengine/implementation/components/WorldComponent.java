@@ -1,6 +1,6 @@
 package me.exerosis.gameengine.implementation.components;
 
-import me.exerosis.gameengine.core.component.EnableableComponent;
+import me.exerosis.gameengine.core.component.ComponentBase;
 import me.exerosis.gameengine.implementation.components.scheduler.SchedulerComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
@@ -13,7 +13,7 @@ import java.io.File;
 /**
  * Created by Exerosis.
  */
-public class WorldComponent extends EnableableComponent {
+public class WorldComponent extends ComponentBase {
     private SchedulerComponent schedulerComponent;
 
     public WorldComponent(SchedulerComponent schedulerComponent) {

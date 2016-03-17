@@ -3,9 +3,10 @@ package me.exerosis.gameengine.core.component;
 /**
  * Created by Exerosis.
  */
-public class EnableableComponent implements Enableable, Component {
+public abstract class ComponentBase implements Component {
     private boolean enabled = false;
 
+    @Override
     public void enable() {
         if (isEnabled())
             return;
@@ -13,6 +14,7 @@ public class EnableableComponent implements Enableable, Component {
         enabled = true;
     }
 
+    @Override
     public void disable() {
         if (!isEnabled())
             return;
@@ -21,17 +23,19 @@ public class EnableableComponent implements Enableable, Component {
     }
 
     @Override
+    public boolean isEnabled()
+    {
+        return enabled;
+    }
+
     public void onEnable() {
 
     }
 
-    @Override
+
     public void onDisable() {
 
     }
 
-    @Override
-    public boolean isEnabled() {
-        return enabled;
-    }
+
 }

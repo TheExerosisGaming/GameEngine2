@@ -1,7 +1,7 @@
 
 package me.exerosis.gameengine.implementation.components.scheduler;
 
-import me.exerosis.gameengine.core.component.EnableableComponent;
+import me.exerosis.gameengine.core.component.ComponentBase;
 import me.exerosis.gameengine.implementation.components.ExecutorComponent;
 
 import java.util.HashMap;
@@ -11,7 +11,7 @@ import java.util.Map;
  * Written by Exerosis!
  *
  */
-public class SchedulerComponent extends EnableableComponent {
+public class SchedulerComponent extends ComponentBase {
     private final Map<Runnable, TaskData> tasks = new HashMap<>();
     private final ExecutorComponent executorComponent;
 
