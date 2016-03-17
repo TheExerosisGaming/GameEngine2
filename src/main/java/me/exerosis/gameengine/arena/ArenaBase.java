@@ -5,6 +5,7 @@ import me.exerosis.gameengine.arena.game.Game;
 import org.apache.commons.lang.Validate;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.Plugin;
@@ -16,7 +17,7 @@ import java.util.List;
 /**
  * Durpped in to existence by Exerosis on 3/17/2016.
  */
-public abstract class BassArena implements Arena, Listener {
+public abstract class ArenaBase implements Arena, Listener {
 
     private List<Player> players;
 
@@ -24,7 +25,7 @@ public abstract class BassArena implements Arena, Listener {
 
     private Game game;
 
-    public BassArena(Plugin plugin)
+    public ArenaBase(Plugin plugin)
     {
         this.plugin = plugin;
         this.players = new ArrayList<Player>();
@@ -39,6 +40,7 @@ public abstract class BassArena implements Arena, Listener {
         //TODO better
         System.out.println("Game Ended");
         Bukkit.getServer().getPluginManager().callEvent(new ArenaEndEvent(this));
+        this.game = null;
     }
 
     protected boolean startGame(Game game)
@@ -100,6 +102,7 @@ public abstract class BassArena implements Arena, Listener {
     }
 
     //Listeners
+    @EventHandler
     public void onQuit(PlayerQuitEvent event)
     {
         this.removePlayer(event.getPlayer());
@@ -120,9 +123,9 @@ public abstract class BassArena implements Arena, Listener {
     }
 
     @Override
-    public boolean hasPlayer(Player player)
+    public boolean hasPlayer(Object player)
     {
-        return getPlayers().contains(player);
+        return player instanceof Player && getPlayers().contains(player);
     }
 
     @Override

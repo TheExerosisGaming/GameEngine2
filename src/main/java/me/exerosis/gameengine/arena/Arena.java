@@ -19,7 +19,7 @@ public interface Arena {
 
     Collection<Player> getPlayers();
 
-    boolean hasPlayer(Player player);
+    boolean hasPlayer(Object player);
 
     void broadcast(String message);
 
