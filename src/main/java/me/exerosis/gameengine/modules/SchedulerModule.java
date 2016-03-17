@@ -1,11 +1,6 @@
 
 package me.exerosis.gameengine.modules;
 
-import lombok.Getter;
-import org.blockserver.core.Server;
-import org.blockserver.core.module.ServerModule;
-import org.blockserver.core.modules.thread.ExecutorModule;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,18 +9,17 @@ import java.util.Map;
  *
  */
 public class SchedulerModule  {
-    @Getter private final Map<Runnable, TaskData> tasks = new HashMap<>();
+    private final Map<Runnable, TaskData> tasks = new HashMap<>();
     private final ExecutorModule executorModule;
 
-    public SchedulerModule(Server server, ExecutorModule executorModule) {
-        super(server);
+    public SchedulerModule(ExecutorModule executorModule) {
         this.executorModule = executorModule;
     }
 
     //TODO maybe make this better!
     @Override
-    public void enable() {
-        executorModule.getExecutorService().execute(() -> {
+    public void onEnable() {
+        executorModule.getExecutor().execute(() -> {
             while (isEnabled()) {
                 for (Map.Entry<Runnable, TaskData> entry : tasks.entrySet()) {
                     TaskData taskData = entry.getValue();
@@ -33,11 +27,11 @@ public class SchedulerModule  {
                         continue;
                     taskData.repeatTimes--;
                     //So by doing this every task will be run at the same time... not in series... is that ok?
-                    executorModule.getExecutorService().execute(() -> entry.getKey().run());
+                    executorModule.getExecutor().execute(() -> entry.getKey().run());
                     //
-                    if (taskData.getRepeatTimes() <= 0)
+                    if (taskData.repeatTimes <= 0)
                         tasks.remove(entry.getKey());
-                    taskData.setLastTickTime(System.currentTimeMillis());
+                    taskData.lastTickTime = System.currentTimeMillis();
                 }
                 try {
                     Thread.sleep(1L);
@@ -46,13 +40,13 @@ public class SchedulerModule  {
                 }
             }
         });
-        super.enable();
+        super.onEnable();
     }
 
     @Override
-    public void disable() {
+    public void onDisable() {
         tasks.clear();
-        super.disable();
+        super.onDisable();
     }
 
     public void registerTask(Runnable task, double delay) {
@@ -86,11 +80,11 @@ public class SchedulerModule  {
     }
 
     public void setTaskDelay(Runnable task, double delay) {
-        getTaskData(task).setDelay(delay);
+        getTaskData(task).delay = delay;
     }
 
     public void setTaskRepeatTimes(Runnable task, int repeatTimes) {
-        getTaskData(task).setRepeatTimes(repeatTimes);
+        getTaskData(task).repeatTimes = repeatTimes;
     }
 
     public double getTaskDelay(Runnable task) {
