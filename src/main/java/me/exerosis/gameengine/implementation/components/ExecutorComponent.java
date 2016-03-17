@@ -1,4 +1,6 @@
-package me.exerosis.gameengine.modules;
+package me.exerosis.gameengine.implementation.components;
+
+import me.exerosis.gameengine.core.component.EnableableComponent;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -6,10 +8,10 @@ import java.util.concurrent.Executors;
 /**
  * Created by Exerosis.
  */
-public class ExecutorModule {
+public class ExecutorComponent extends EnableableComponent {
     private ExecutorService executor;
 
-    public ExecutorModule(int threads) {
+    public ExecutorComponent(int threads) {
         executor = Executors.newFixedThreadPool(threads);
     }
 

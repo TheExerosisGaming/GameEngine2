@@ -1,7 +1,6 @@
-package me.exerosis.gameengine.arena.events;
+package me.exerosis.gameengine.implementation.events.arena;
 
-import me.exerosis.gameengine.arena.Arena;
-import me.exerosis.gameengine.arena.ArenaEvent;
+import me.exerosis.gameengine.core.arena.Arena;
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
 

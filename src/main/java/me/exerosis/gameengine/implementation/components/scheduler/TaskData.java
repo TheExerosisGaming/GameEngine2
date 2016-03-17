@@ -1,10 +1,10 @@
-package me.exerosis.gameengine.modules;
+package me.exerosis.gameengine.implementation.components.scheduler;
 
 /**
  * Written by Exerosis!
  *
  * @author BlockServer Team
- * @see SchedulerModule
+ * @see SchedulerComponent
  */
 public class TaskData {
     protected long lastTickTime;

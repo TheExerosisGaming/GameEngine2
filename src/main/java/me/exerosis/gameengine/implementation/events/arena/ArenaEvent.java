@@ -1,5 +1,6 @@
-package me.exerosis.gameengine.arena;
+package me.exerosis.gameengine.implementation.events.arena;
 
+import me.exerosis.gameengine.core.arena.Arena;
 import org.bukkit.event.Event;
 
 /**

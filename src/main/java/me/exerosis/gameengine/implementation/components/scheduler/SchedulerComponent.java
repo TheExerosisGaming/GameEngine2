@@ -1,5 +1,8 @@
 
-package me.exerosis.gameengine.modules;
+package me.exerosis.gameengine.implementation.components.scheduler;
+
+import me.exerosis.gameengine.core.component.EnableableComponent;
+import me.exerosis.gameengine.implementation.components.ExecutorComponent;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,18 +11,18 @@ import java.util.Map;
  * Written by Exerosis!
  *
  */
-public class SchedulerModule  {
+public class SchedulerComponent extends EnableableComponent {
     private final Map<Runnable, TaskData> tasks = new HashMap<>();
-    private final ExecutorModule executorModule;
+    private final ExecutorComponent executorComponent;
 
-    public SchedulerModule(ExecutorModule executorModule) {
-        this.executorModule = executorModule;
+    public SchedulerComponent(ExecutorComponent executorComponent) {
+        this.executorComponent = executorComponent;
     }
 
     //TODO maybe make this better!
     @Override
     public void onEnable() {
-        executorModule.getExecutor().execute(() -> {
+        executorComponent.getExecutor().execute(() -> {
             while (isEnabled()) {
                 for (Map.Entry<Runnable, TaskData> entry : tasks.entrySet()) {
                     TaskData taskData = entry.getValue();
@@ -27,7 +30,7 @@ public class SchedulerModule  {
                         continue;
                     taskData.repeatTimes--;
                     //So by doing this every task will be run at the same time... not in series... is that ok?
-                    executorModule.getExecutor().execute(() -> entry.getKey().run());
+                    executorComponent.getExecutor().execute(() -> entry.getKey().run());
                     //
                     if (taskData.repeatTimes <= 0)
                         tasks.remove(entry.getKey());

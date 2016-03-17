@@ -1,7 +1,9 @@
-package me.exerosis.gameengine.arena;
+package me.exerosis.gameengine.core.arena;
 
-import me.exerosis.gameengine.arena.events.*;
-import me.exerosis.gameengine.arena.game.Game;
+import me.exerosis.gameengine.core.game.Game;
+import me.exerosis.gameengine.events.arena.*;
+import me.exerosis.gameengine.implementation.arena.*;
+import me.exerosis.gameengine.implementation.events.arena.*;
 import org.apache.commons.lang.Validate;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
