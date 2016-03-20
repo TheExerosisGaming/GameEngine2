@@ -1,6 +1,6 @@
 package me.exerosis.gameengine.component.spectate;
 
-import org.bukkit.Location;
+import me.exerosis.gameengine.utils.player.PlayerHolder;
 import org.bukkit.entity.Player;
 
 import java.util.Collection;
@@ -12,17 +12,29 @@ public interface SpectateComponent {
 
     boolean enableSpectate(Player player);
 
-    boolean enableSpectateWithLoc(Player player, Location location);
-
     boolean disableSpectate(Player player);
 
-    boolean disableSpectateWithLoc(Player player, Location location);
+    default boolean isSpectating(Player player)
+    {
+        return getSpectateHolder().filter(player);
+    }
 
-    boolean isSpectating(Player player);
+    default boolean isNotSpectating(Player player)
+    {
+        return getNonSpectateHolder().filter(player);
+    }
 
-    boolean isNotSpectating(Player player);
+    default Collection<Player> getSpectators()
+    {
+        return getSpectateHolder().getPlayers();
+    }
 
-    Collection<Player> getSpectators();
+    default Collection<Player> getNonSpectators()
+    {
+        return getNonSpectateHolder().getPlayers();
+    }
 
-    Collection<Player> getNonPlayers();
+    PlayerHolder getSpectateHolder();
+
+    PlayerHolder getNonSpectateHolder();
 }
