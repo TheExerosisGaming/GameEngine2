@@ -1,12 +1,13 @@
-package me.exerosis.gameengine.arena.component;
+package me.exerosis.gameengine.component.player;
 
-import me.exerosis.gameengine.arena.events.ArenaCanJoinEvent;
-import me.exerosis.gameengine.arena.events.ArenaJoinEvent;
-import me.exerosis.gameengine.arena.events.ArenaQuitEvent;
+
+import me.exerosis.gameengine.component.player.events.PlayerComponentCanJoinEvent;
+import me.exerosis.gameengine.component.player.events.PlayerComponentJoinEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * Durpped in to existence by Exerosis on 3/17/2016.
@@ -15,12 +16,11 @@ public class SimplePlayerComponent implements PlayerComponent {
 
     private ArrayList<Player> players;
 
-
     //Players joining & leaving
     @Override
     public boolean canJoin(Player player)
     {
-        ArenaCanJoinEvent event = new ArenaCanJoinEvent(this, player);
+        PlayerComponentCanJoinEvent event = new PlayerComponentCanJoinEvent(this, player);
         Bukkit.getPluginManager().callEvent(event);
         return !event.isCancelled();
     }
@@ -29,9 +29,9 @@ public class SimplePlayerComponent implements PlayerComponent {
     @Override
     public boolean addPlayer(Player player)
     {
-        if (!hasPlayer(player))
+        if (!filter(player))
         {
-            Bukkit.getPluginManager().callEvent(new ArenaJoinEvent(this, player));
+            Bukkit.getPluginManager().callEvent(new PlayerComponentJoinEvent(this, player));
             players.add(player);
             return true;
         }
@@ -41,13 +41,20 @@ public class SimplePlayerComponent implements PlayerComponent {
     @Override
     public boolean removePlayer(Player player)
     {
-        if (hasPlayer(player))
+        if (filter(player))
         {
-            Bukkit.getPluginManager().callEvent(new ArenaQuitEvent(this, player));
+            Bukkit.getPluginManager().callEvent(new PlayerComponentQuitEvent(this, player));
             players.remove(player);
             return true;
         }
         return false;
+    }
+
+
+    @Override
+    public Collection<Player> getPlayers()
+    {
+        return this.players;
     }
 
 }

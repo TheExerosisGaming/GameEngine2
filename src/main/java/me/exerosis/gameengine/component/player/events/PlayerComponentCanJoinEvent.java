@@ -1,6 +1,7 @@
-package me.exerosis.gameengine.implementation.events.arena;
+package me.exerosis.gameengine.component.player.events;
 
-import me.exerosis.gameengine.core.arena.Arena;
+import me.exerosis.gameengine.component.ComponentEvent;
+import me.exerosis.gameengine.component.player.PlayerComponent;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.HandlerList;
@@ -8,18 +9,16 @@ import org.bukkit.event.HandlerList;
 /**
  * Durpped in to existence by Exerosis on 3/17/2016.
  */
-public class ArenaCanJoinEvent extends ArenaEvent implements Cancellable {
+public class PlayerComponentCanJoinEvent extends ComponentEvent<PlayerComponent> implements Cancellable {
 
     private static final HandlerList handlers = new HandlerList();
-
     private boolean isCancelled;
-
     private Player player;
 
 
-    public ArenaCanJoinEvent(Arena arena, Player player)
+    public PlayerComponentCanJoinEvent(PlayerComponent playerComponent, Player player)
     {
-        super(arena);
+        super(playerComponent);
         this.player = player;
     }
 

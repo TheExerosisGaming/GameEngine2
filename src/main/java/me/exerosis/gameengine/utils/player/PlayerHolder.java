@@ -1,5 +1,6 @@
-package me.exerosis.gameengine.utils;
+package me.exerosis.gameengine.utils.player;
 
+import me.exerosis.gameengine.utils.Filter;
 import org.bukkit.entity.Player;
 
 import java.util.Collection;
@@ -16,4 +17,6 @@ public interface PlayerHolder extends Filter<Player> {
     {
         return getPlayers().contains(player);
     }
+
+
 }

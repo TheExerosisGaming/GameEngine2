@@ -1,6 +1,6 @@
 package me.exerosis.gameengine.implementation.components;
 
-import me.exerosis.gameengine.core.component.ComponentBase;
+import me.exerosis.gameengine.component.ComponentBase;
 import me.exerosis.gameengine.implementation.components.scheduler.SchedulerComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.World;

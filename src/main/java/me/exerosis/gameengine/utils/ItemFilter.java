@@ -4,8 +4,9 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.material.MaterialData;
 
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Durpped in to existence by Exerosis on 3/17/2016.
@@ -13,11 +14,16 @@ import java.util.Collection;
 public class ItemFilter implements Filter<ItemStack> {
 
 
-    private Collection<Material> materials;
+    private Set<Material> materials;
 
-    private Collection<MaterialData> materialDatas;
+    private Set<MaterialData> materialDatas;
 
     private boolean whiteList;
+
+    public ItemFilter()
+    {
+        this(null, null, true);
+    }
 
     public ItemFilter(boolean whiteList)
     {
@@ -42,13 +48,15 @@ public class ItemFilter implements Filter<ItemStack> {
 
     public ItemFilter(Collection<Material> materials, Collection<MaterialData> materialDatas, boolean whiteList)
     {
-        if (materials == null)
-            materials = new ArrayList<Material>();
-        if (materialDatas == null)
-            materialDatas = new ArrayList<MaterialData>();
+        this.materials = new HashSet<>();
+        this.materialDatas = new HashSet<>();
 
-        this.materials = materials;
-        this.materialDatas = materialDatas;
+        if (materials != null)
+            this.materials.addAll(materials);
+
+        if (materialDatas != null)
+            this.materialDatas.addAll(materialDatas);
+
         this.whiteList = whiteList;
     }
 
@@ -56,5 +64,35 @@ public class ItemFilter implements Filter<ItemStack> {
     public boolean filter(ItemStack item)
     {
         return this.whiteList == (materials.contains(item.getType()) || materialDatas.contains(item.getData()));
+    }
+
+    public boolean addMaterial(Material material)
+    {
+        return this.materials.add(material);
+    }
+
+    public boolean removeMaterial(Material material)
+    {
+        return this.materials.remove(material);
+    }
+
+    public boolean addMaterialData(MaterialData materialData)
+    {
+        return this.materialDatas.add(materialData);
+    }
+
+    public boolean removeMaterialData(MaterialData materialData)
+    {
+        return this.materialDatas.remove(materialData);
+    }
+
+    public boolean isWhiteList()
+    {
+        return whiteList;
+    }
+
+    public void setWhiteList(boolean whiteList)
+    {
+        this.whiteList = whiteList;
     }
 }

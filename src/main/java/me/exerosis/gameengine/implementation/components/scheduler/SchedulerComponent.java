@@ -1,7 +1,7 @@
 
 package me.exerosis.gameengine.implementation.components.scheduler;
 
-import me.exerosis.gameengine.core.component.ComponentBase;
+import me.exerosis.gameengine.component.ComponentBase;
 import me.exerosis.gameengine.implementation.components.ExecutorComponent;
 
 import java.util.HashMap;

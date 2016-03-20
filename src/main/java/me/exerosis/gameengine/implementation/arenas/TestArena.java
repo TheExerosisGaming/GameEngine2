@@ -1,29 +1,18 @@
 package me.exerosis.gameengine.implementation.arenas;
 
-import me.exerosis.gameengine.core.game.Game;
-import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
+import me.exerosis.gameengine.arena.Arena;
+import me.exerosis.gameengine.component.player.PlayerComponent;
+import me.exerosis.gameengine.component.player.SimplePlayerComponent;
 
 /**
  * Durpped in to existence by Exerosis on 3/17/2016.
  */
-public class TestArena {
+public class TestArena implements Arena {
 
-    public TestArena(Plugin plugin, Game game)
+    private PlayerComponent playerComponent;
+
+    public TestArena()
     {
-        super(plugin);
-        startGame(game);
-    }
-
-    @Override
-    public boolean removePlayer(Player player)
-    {
-        if (super.removePlayer(player))
-        {
-            player.kickPlayer("Lol bye!");
-            return true;
-        }
-
-        return false;
+        playerComponent = new SimplePlayerComponent();
     }
 }

@@ -1,9 +1,10 @@
-package me.exerosis.gameengine.core.arena;
+package me.exerosis.gameengine.arena;
 
-import me.exerosis.gameengine.core.game.Game;
+import me.exerosis.gameengine.component.game.events.GameEndEvent;
+import me.exerosis.gameengine.component.player.events.PlayerComponentCanJoinEvent;
+import me.exerosis.gameengine.component.player.events.PlayerComponentJoinEvent;
 import me.exerosis.gameengine.events.arena.*;
 import me.exerosis.gameengine.implementation.arena.*;
-import me.exerosis.gameengine.implementation.events.arena.*;
 import org.apache.commons.lang.Validate;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -41,7 +42,7 @@ public abstract class ArenaBase implements Arena, Listener {
     {
         //TODO better
         System.out.println("Game Ended");
-        Bukkit.getServer().getPluginManager().callEvent(new ArenaEndEvent(this));
+        Bukkit.getServer().getPluginManager().callEvent(new GameEndEvent(this));
         this.game = null;
     }
 
@@ -73,18 +74,18 @@ public abstract class ArenaBase implements Arena, Listener {
     @Override
     public boolean canJoin(Player player)
     {
-        ArenaCanJoinEvent event = new ArenaCanJoinEvent(this, player);
+        PlayerComponentCanJoinEvent event = new PlayerComponentCanJoinEvent(this, player);
         Bukkit.getPluginManager().callEvent(event);
         return !event.isCancelled();
     }
-
 
     @Override
     public boolean addPlayer(Player player)
     {
         if (!hasPlayer(player))
         {
-            Bukkit.getPluginManager().callEvent(new ArenaJoinEvent(this, player));
+            Bukkit.getPluginManager().callEvent(new PlayerComponentJoinEvent(this, player));
+
             players.add(player);
             return true;
         }
@@ -96,7 +97,7 @@ public abstract class ArenaBase implements Arena, Listener {
     {
         if (hasPlayer(player))
         {
-            Bukkit.getPluginManager().callEvent(new ArenaQuitEvent(this, player));
+            Bukkit.getPluginManager().callEvent(new PlayerComponentQuitEvent(this, player));
             players.remove(player);
             return true;
         }

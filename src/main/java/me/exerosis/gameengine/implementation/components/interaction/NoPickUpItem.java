@@ -1,7 +1,7 @@
 package me.exerosis.gameengine.implementation.components.interaction;
 
-import me.exerosis.gameengine.core.arena.Arena;
-import me.exerosis.gameengine.core.component.ComponentListener;
+import me.exerosis.gameengine.arena.Arena;
+import me.exerosis.gameengine.component.ComponentListener;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerPickupItemEvent;
 import org.bukkit.inventory.ItemStack;

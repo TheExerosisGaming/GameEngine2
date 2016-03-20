@@ -1,4 +1,4 @@
-package me.exerosis.gameengine.core.component;
+package me.exerosis.gameengine.component;
 
 /**
  * Created by Exerosis.
