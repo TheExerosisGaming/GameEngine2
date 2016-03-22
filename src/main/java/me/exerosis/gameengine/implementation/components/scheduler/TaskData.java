@@ -8,8 +8,8 @@ package me.exerosis.gameengine.implementation.components.scheduler;
  */
 public class TaskData {
     protected long lastTickTime;
-    private double delay;
-    private int repeatTimes;
+    protected double delay;
+    protected int repeatTimes;
 
     public TaskData(double delay, int repeatTimes) {
         this.delay = delay;
