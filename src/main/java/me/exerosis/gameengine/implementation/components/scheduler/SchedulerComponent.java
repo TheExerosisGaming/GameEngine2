@@ -52,22 +52,23 @@ public class SchedulerComponent extends ComponentBase {
         super.onDisable();
     }
 
-    public void registerTask(Runnable task, double delay) {
-        registerTask(task, delay, 1);
+    public Runnable registerTask(Runnable task, double delay) {
+        return registerTask(task, delay, 1);
     }
 
-    public void registerTask(Runnable task, int repeatTimes) {
-        registerTask(task, 1, repeatTimes);
+    public Runnable registerTask(Runnable task, int repeatTimes) {
+        return registerTask(task, 1, repeatTimes);
     }
 
-    public void registerTask(Runnable task, double delay, int repeatTimes) {
-        registerTask(task, new TaskData(delay, repeatTimes));
+    public Runnable registerTask(Runnable task, double delay, int repeatTimes) {
+        return registerTask(task, new TaskData(delay, repeatTimes));
     }
 
-    public void registerTask(Runnable task, TaskData taskData) {
+    public Runnable registerTask(Runnable task, TaskData taskData) {
         synchronized (tasks) {
             tasks.put(task, taskData);
         }
+        return task;
     }
 
     public TaskData getTaskData(Runnable task) {

@@ -28,7 +28,15 @@ public class TaskData {
         return delay;
     }
 
+    public void setDelay(double delay) {
+        this.delay = delay;
+    }
+
     public int getRepeatTimes() {
         return repeatTimes;
+    }
+
+    public void setRepeatTimes(int repeatTimes) {
+        this.repeatTimes = repeatTimes;
     }
 }
