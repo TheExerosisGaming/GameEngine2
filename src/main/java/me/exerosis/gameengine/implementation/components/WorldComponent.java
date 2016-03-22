@@ -57,6 +57,7 @@ public class WorldComponent extends ComponentBase {
 
         //Wait 1 second before unloading the world
         schedulerComponent.registerTask(() -> {
+            schedulerComponent.getTaskData(this).
             if (!Bukkit.unloadWorld(world, false))
                 throw new RuntimeException("[WorldComponent]Unable to unload world, please fix the problem!");
             runWhenUnloaded.run();
