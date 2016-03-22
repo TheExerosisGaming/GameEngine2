@@ -95,7 +95,7 @@ public class GameModeSpectateComponent implements SpectateComponent {
         @Override
         public Collection<Player> getPlayers()
         {
-            return GameModeSpectateComponent.this.spectaters;
+            return spectaters;
         }
     }
 

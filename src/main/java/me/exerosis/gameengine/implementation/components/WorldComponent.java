@@ -33,7 +33,7 @@ public class WorldComponent extends ComponentBase {
         File worldData = new File(file.getPath() + "/level.dat");
 
         if (!worldData.exists())
-            System.err.println("[WorldComponent]Failed to load world! Could not find expected 'level.dat' in directory '"file.getPath() + "'.");
+            System.err.println("[WorldComponent]Failed to load world! Could not find expected 'level.dat' in directory '" + file.getPath() + "'.");
 
         WorldCreator worldCreator = new WorldCreator("");
         worldCreator.type(WorldType.FLAT);

@@ -10,9 +10,11 @@ import org.bukkit.event.HandlerList;
  */
 public class PlayerAddEvent extends Event {
 
+
     private static final HandlerList handlers = new HandlerList();
     private PlayerHolder playerHolder;
     private Player player;
+
 
     public PlayerAddEvent(PlayerHolder playerHolder, Player player)
     {

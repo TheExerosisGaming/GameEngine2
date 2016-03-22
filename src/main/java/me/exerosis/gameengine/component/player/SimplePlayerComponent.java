@@ -3,6 +3,7 @@ package me.exerosis.gameengine.component.player;
 
 import me.exerosis.gameengine.component.player.events.PlayerComponentCanJoinEvent;
 import me.exerosis.gameengine.component.player.events.PlayerComponentJoinEvent;
+import me.exerosis.gameengine.component.player.events.PlayerComponentQuitEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
