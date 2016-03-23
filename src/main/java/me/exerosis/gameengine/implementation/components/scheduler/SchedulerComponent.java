@@ -30,11 +30,11 @@ public class SchedulerComponent extends ComponentBase {
                     TaskData taskData = entry.getValue();
                     if (taskData.getNextTickTime() > System.currentTimeMillis())
                         continue;
-                    taskData.repeatTimes--;
+                    taskData.setRepeatTimes(taskData.getRepeatTimes()-1);
                     //So by doing this every task will be run at the same time... not in series... is that ok?
                     executorComponent.getExecutor().execute(() -> entry.getKey().run());
                     //
-                    if (taskData.repeatTimes <= 0)
+                    if (taskData.getRepeatTimes() <= 0)
                         tasks.remove(entry.getKey());
                     taskData.lastTickTime = System.currentTimeMillis();
                 }
