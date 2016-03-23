@@ -1,6 +1,6 @@
-package me.exerosis.gameengine.utils.player.events;
+package me.exerosis.gameengine.common.playerholder.events;
 
-import me.exerosis.gameengine.utils.player.PlayerHolder;
+import me.exerosis.gameengine.common.playerholder.PlayerHolder;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;

@@ -1,4 +1,3 @@
-
 package me.exerosis.gameengine.implementation.components.scheduler;
 
 import me.exerosis.gameengine.component.ComponentBase;
@@ -22,9 +21,12 @@ public class SchedulerComponent extends ComponentBase {
     //TODO maybe make this better!
     @Override
     public void onEnable() {
-        executorComponent.getExecutor().execute(() -> {
-            while (isEnabled()) {
-                for (Map.Entry<Runnable, TaskData> entry : tasks.entrySet()) {
+        executorComponent.getExecutor().execute(() ->
+        {
+            while (isEnabled())
+            {
+                for (Map.Entry<Runnable, TaskData> entry : tasks.entrySet())
+                {
                     TaskData taskData = entry.getValue();
                     if (taskData.getNextTickTime() > System.currentTimeMillis())
                         continue;
@@ -36,9 +38,12 @@ public class SchedulerComponent extends ComponentBase {
                         tasks.remove(entry.getKey());
                     taskData.lastTickTime = System.currentTimeMillis();
                 }
-                try {
+                try
+                {
                     Thread.sleep(1L);
-                } catch (InterruptedException e) {
+                }
+                catch (InterruptedException e)
+                {
                     e.printStackTrace();
                 }
             }

@@ -20,6 +20,7 @@ public class Main extends JavaPlugin {
 
     public static void main(String[] args)
     {
+
         Runnable beeper = () -> {
             System.out.println(Thread.currentThread().getId());
         };

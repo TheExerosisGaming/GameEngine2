@@ -1,7 +1,7 @@
 package me.exerosis.gameengine.component.spectate.events;
 
-import me.exerosis.gameengine.utils.player.PlayerHolder;
-import me.exerosis.gameengine.utils.player.events.PlayerAddEvent;
+import me.exerosis.gameengine.common.playerholder.PlayerHolder;
+import me.exerosis.gameengine.common.playerholder.events.PlayerAddEvent;
 import org.bukkit.entity.Player;
 
 /**

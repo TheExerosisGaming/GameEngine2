@@ -1,6 +1,6 @@
-package me.exerosis.gameengine.utils.player;
+package me.exerosis.gameengine.common.playerholder;
 
-import me.exerosis.gameengine.utils.Filter;
+import me.exerosis.gameengine.common.utils.Filter;
 import org.bukkit.entity.Player;
 
 import java.util.Collection;

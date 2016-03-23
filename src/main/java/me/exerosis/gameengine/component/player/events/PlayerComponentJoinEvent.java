@@ -1,7 +1,7 @@
 package me.exerosis.gameengine.component.player.events;
 
 import me.exerosis.gameengine.component.player.PlayerComponent;
-import me.exerosis.gameengine.utils.player.events.PlayerAddEvent;
+import me.exerosis.gameengine.common.playerholder.events.PlayerAddEvent;
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
 

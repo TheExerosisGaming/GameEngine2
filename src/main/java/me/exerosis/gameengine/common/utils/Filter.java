@@ -1,4 +1,4 @@
-package me.exerosis.gameengine.utils;
+package me.exerosis.gameengine.common.utils;
 
 /**
  * Durpped in to existence by Exerosis on 3/17/2016.

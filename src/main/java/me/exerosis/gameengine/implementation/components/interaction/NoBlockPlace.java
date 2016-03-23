@@ -1,9 +1,9 @@
 package me.exerosis.gameengine.implementation.components.interaction;
 
 import me.exerosis.gameengine.component.ComponentPlayerListener;
-import me.exerosis.gameengine.utils.BlockUtilities;
-import me.exerosis.gameengine.utils.Filter;
-import me.exerosis.gameengine.utils.player.PlayerHolder;
+import me.exerosis.gameengine.common.utils.BlockUtilities;
+import me.exerosis.gameengine.common.utils.Filter;
+import me.exerosis.gameengine.common.playerholder.PlayerHolder;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.inventory.ItemStack;

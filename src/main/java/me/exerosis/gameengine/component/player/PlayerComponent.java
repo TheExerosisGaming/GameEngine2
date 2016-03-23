@@ -1,6 +1,6 @@
 package me.exerosis.gameengine.component.player;
 
-import me.exerosis.gameengine.utils.player.PlayerHolder;
+import me.exerosis.gameengine.common.playerholder.PlayerHolder;
 import org.bukkit.entity.Player;
 
 /**
