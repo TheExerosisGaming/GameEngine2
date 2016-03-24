@@ -20,8 +20,11 @@ public class Main extends JavaPlugin {
 
     public static void main(String[] args)
     {
-        Map<String, String> map = new HashMap<>();
-        System.out.println(map.get("test"));
+        String[] s = new String[]{"moo"};
+
+        s instanceof Iterable
+
+        System.out.println();
     }
 
     public static void test()

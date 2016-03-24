@@ -1,12 +1,9 @@
 package me.exerosis.gameengine.component.simple;
 
-import me.exerosis.gameengine.common.item.DefaultItemPredicate;
-import me.exerosis.gameengine.common.utils.BlockUtilities;
+import me.exerosis.gameengine.common.item.DefaultPredicate;
 import me.exerosis.gameengine.component.ComponentListener;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.block.BlockPlaceEvent;
-import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.inventory.ItemStack;
 
@@ -23,7 +20,7 @@ public class NoDropItem extends ComponentListener {
 
     public NoDropItem(Predicate<Player> playerPredicate)
     {
-        this(playerPredicate, new DefaultItemPredicate());
+        this(playerPredicate, new DefaultPredicate<>());
     }
 
     public NoDropItem(Predicate<Player> playerPredicate, Predicate<ItemStack> itemPredicate)

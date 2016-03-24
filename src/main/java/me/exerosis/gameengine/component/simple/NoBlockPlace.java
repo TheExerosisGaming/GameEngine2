@@ -1,11 +1,10 @@
 package me.exerosis.gameengine.component.simple;
 
-import me.exerosis.gameengine.common.item.DefaultItemPredicate;
+import me.exerosis.gameengine.common.item.DefaultPredicate;
 import me.exerosis.gameengine.common.utils.BlockUtilities;
 import me.exerosis.gameengine.component.ComponentListener;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.inventory.ItemStack;
 
@@ -22,7 +21,7 @@ public class NoBlockPlace extends ComponentListener {
 
     public NoBlockPlace(Predicate<Player> playerPredicate)
     {
-        this(playerPredicate, new DefaultItemPredicate());
+        this(playerPredicate, new DefaultPredicate<>());
     }
 
     public NoBlockPlace(Predicate<Player> playerPredicate, Predicate<ItemStack> itemPredicate)

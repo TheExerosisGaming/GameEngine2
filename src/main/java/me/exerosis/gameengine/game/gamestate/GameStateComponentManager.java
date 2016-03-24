@@ -97,9 +97,11 @@ public class GameStateComponentManager implements Listener {
         return addComponents(Collections.singleton(gameState), Collections.singleton(component));
     }
 
-    public boolean addComponents(GameState gameState, Component... componentsToAdd)
+    public boolean addComponents(GameState gameState, Component component, Component... componentsToAdd)
     {
-        return addComponents(Collections.singleton(gameState), Arrays.asList(componentsToAdd));
+        List<Component> array = new ArrayList<>(Arrays.asList(componentsToAdd));
+        array.add(component);
+        return addComponents(Collections.singleton(gameState), array);
     }
 
     public boolean addComponents(GameState[] gameStates, Component... componentsToAdd)
