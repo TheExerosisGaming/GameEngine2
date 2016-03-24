@@ -1,10 +1,8 @@
 package me.exerosis.gameengine.component.countdown;
 
-import me.exerosis.gameengine.common.playerholder.PlayerHolder;
 import me.exerosis.gameengine.common.scheduler.SyncRunnable;
 import me.exerosis.gameengine.component.ComponentBase;
 
-import java.util.concurrent.FutureTask;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
@@ -12,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Durpped in to existence by Exerosis on 3/23/2016.
  */
-public class Countdown extends ComponentBase implements Runnable {
+public abstract class CountdownBase extends ComponentBase implements SyncRunnable {
 
     private final int startTime;
 
@@ -20,13 +18,10 @@ public class Countdown extends ComponentBase implements Runnable {
     private ScheduledFuture<?> futureTask;
     private int counter;
 
-    private Runnable returnCommand;
-
-    public Countdown(ScheduledExecutorService scheduler, Runnable returnCommand, int startTime)
+    public CountdownBase(ScheduledExecutorService scheduler, int startTime)
     {
         this.startTime = startTime;
         this.counter = startTime;
-        this.returnCommand = returnCommand;
         this.scheduler = scheduler;
     }
 
@@ -42,8 +37,11 @@ public class Countdown extends ComponentBase implements Runnable {
         if (futureTask != null || counter <= 0)
             return false;
         futureTask = scheduler.scheduleAtFixedRate(this, 1, 1, TimeUnit.SECONDS);
+        this.onStart();
         return true;
     }
+
+    public abstract void onStart();
 
     public boolean stop()
     {
@@ -51,22 +49,28 @@ public class Countdown extends ComponentBase implements Runnable {
             return false;
         futureTask.cancel(true);
         futureTask = null;
+        this.onStop();
         return true;
     }
 
+    public abstract void onStop();
+
     @Override
-    public void run()
+    public void syncRun()
     {
         if (counter > 0)
-            System.out.println("Game starting in: " + counter);
+            count(counter);
         else
         {
-            returnCommand.run();
+            this.onFinish();
             stop();
         }
         counter--;
-
     }
+
+    public abstract void count(int counter);
+
+    public abstract void onFinish();
 
     public int getCounter()
     {

@@ -18,5 +18,9 @@ public interface PlayerHolder extends Predicate<Player> {
         return getPlayers().contains(player);
     }
 
-
+    default void broadcast(String message)
+    {
+        for (Player player : getPlayers())
+            player.sendMessage(message);
+    }
 }
