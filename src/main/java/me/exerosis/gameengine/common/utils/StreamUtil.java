@@ -1,4 +1,4 @@
-package me.exerosis.gameengine.utils;
+package me.exerosis.gameengine.common.utils;
 
 import org.apache.commons.io.IOUtils;
 

@@ -1,8 +1,8 @@
 package me.exerosis.gameengine.implementation.components.worlds;
 
-import me.exerosis.gameengine.utils.StreamUtil;
+import me.exerosis.gameengine.common.utils.StreamUtil;
+import me.exerosis.gameengine.common.utils.UtilitiesFiles;
 import net.minecraft.server.v1_9_R1.MinecraftServer;
-import net.minecraft.server.v1_9_R1.World;
 import org.bukkit.Bukkit;
 import org.bukkit.WorldCreator;
 import org.bukkit.WorldType;
@@ -49,7 +49,7 @@ public class WorldWrapper {
     public void backup() {
         try {
             backupFile = File.createTempFile("backup", ".tmp", worldFile);
-
+            UtilitiesFiles.createZip();
 
 
         } catch (IOException e) {
@@ -66,8 +66,6 @@ public class WorldWrapper {
             outputStream = new FileOutputStream(backupFile);
             outputStream = new BufferedOutputStream(outputStream);
             outputStream = new ZipOutputStream(outputStream);
-            MinecraftServer
-            outputStream
         } catch (IOException e) {
             e.printStackTrace();
         }
