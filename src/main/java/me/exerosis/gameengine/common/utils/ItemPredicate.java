@@ -7,11 +7,12 @@ import org.bukkit.material.MaterialData;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.function.Predicate;
 
 /**
  * Durpped in to existence by Exerosis on 3/17/2016.
  */
-public class ItemFilter implements Filter<ItemStack> {
+public class ItemPredicate implements Predicate<ItemStack> {
 
 
     private Set<Material> materials;
@@ -20,33 +21,33 @@ public class ItemFilter implements Filter<ItemStack> {
 
     private boolean whiteList;
 
-    public ItemFilter()
+    public ItemPredicate()
     {
         this(null, null, true);
     }
 
-    public ItemFilter(boolean whiteList)
+    public ItemPredicate(boolean whiteList)
     {
         this(null, null, whiteList);
     }
 
-    public ItemFilter(Collection<Material> materials)
+    public ItemPredicate(Collection<Material> materials)
     {
         this(materials, null, true);
     }
 
-    public ItemFilter(Collection<Material> materials, boolean whiteList)
+    public ItemPredicate(Collection<Material> materials, boolean whiteList)
     {
         this(materials, null, whiteList);
     }
 
-    public ItemFilter(Collection<Material> materials, Collection<MaterialData> materialDatas)
+    public ItemPredicate(Collection<Material> materials, Collection<MaterialData> materialDatas)
     {
         this(materials, materialDatas, true);
     }
 
 
-    public ItemFilter(Collection<Material> materials, Collection<MaterialData> materialDatas, boolean whiteList)
+    public ItemPredicate(Collection<Material> materials, Collection<MaterialData> materialDatas, boolean whiteList)
     {
         this.materials = new HashSet<>();
         this.materialDatas = new HashSet<>();
@@ -61,7 +62,7 @@ public class ItemFilter implements Filter<ItemStack> {
     }
 
     @Override
-    public boolean filter(ItemStack item)
+    public boolean test(ItemStack item)
     {
         return this.whiteList == (materials.contains(item.getType()) || materialDatas.contains(item.getData()));
     }

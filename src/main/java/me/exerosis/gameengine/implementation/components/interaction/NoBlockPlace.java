@@ -2,7 +2,6 @@ package me.exerosis.gameengine.implementation.components.interaction;
 
 import me.exerosis.gameengine.component.ComponentPlayerListener;
 import me.exerosis.gameengine.common.utils.BlockUtilities;
-import me.exerosis.gameengine.common.utils.Filter;
 import me.exerosis.gameengine.common.playerholder.PlayerHolder;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.BlockPlaceEvent;
@@ -24,7 +23,7 @@ public class NoBlockPlace extends ComponentPlayerListener {
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent event)
     {
-        if (hasPlayer(event.getPlayer()) && filter.filter(BlockUtilities.toItemStack(event.getBlock())))
+        if (hasPlayer(event.getPlayer()) && filter.test(BlockUtilities.toItemStack(event.getBlock())))
             event.setCancelled(true);
     }
 }

@@ -25,7 +25,7 @@ public class ComponentPlayerListener extends ComponentListener {
 
     public boolean hasPlayer(Player player)
     {
-        return getPlayerHolder().filter(player);
+        return getPlayerHolder().test(player);
     }
 
     public PlayerHolder getPlayerHolder()

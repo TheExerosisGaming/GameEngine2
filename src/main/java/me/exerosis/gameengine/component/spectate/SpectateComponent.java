@@ -16,12 +16,12 @@ public interface SpectateComponent {
 
     default boolean isSpectating(Player player)
     {
-        return getSpectateHolder().filter(player);
+        return getSpectateHolder().test(player);
     }
 
     default boolean isNotSpectating(Player player)
     {
-        return getNonSpectateHolder().filter(player);
+        return getNonSpectateHolder().test(player);
     }
 
     default Collection<Player> getSpectators()

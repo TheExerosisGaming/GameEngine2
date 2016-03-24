@@ -1,5 +1,6 @@
 package me.exerosis.gameengine;
 
+import me.exerosis.gameengine.component.countdown.Countdown;
 import org.bukkit.Bukkit;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
@@ -20,18 +21,13 @@ public class Main extends JavaPlugin {
 
     public static void main(String[] args)
     {
+        Countdown countdown = new Countdown(scheduler, Main::test, 10);
+        countdown.start();
+    }
 
-        Runnable beeper = () -> {
-            System.out.println(Thread.currentThread().getId());
-        };
-
-        final ScheduledFuture<?> beepHandle = scheduler.scheduleAtFixedRate(beeper, 10, 10, TimeUnit.SECONDS);
-
-        scheduler.schedule(() -> {
-            beepHandle.cancel(true);
-        }, 60 * 6, TimeUnit.SECONDS);
-
-        System.out.println();
+    public static void test()
+    {
+        System.out.println("Oooo fancy!");
     }
 
     //Stuuuuuuffff
