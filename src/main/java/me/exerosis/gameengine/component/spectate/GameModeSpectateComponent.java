@@ -109,9 +109,9 @@ public class GameModeSpectateComponent implements SpectateComponent {
         }
 
         @Override
-        public boolean filter(Player player)
+        public boolean test(Player player)
         {
-            return playerComponent.filter(player) && !spectaters.contains(player);
+            return playerComponent.test(player) && !spectaters.contains(player);
         }
     }
 

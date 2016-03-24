@@ -6,6 +6,7 @@ import org.bukkit.Bukkit;
 /**
  * Durpped in to existence by Exerosis on 3/22/2016.
  */
+@FunctionalInterface
 public interface SyncRunnable extends Runnable {
 
     @Override

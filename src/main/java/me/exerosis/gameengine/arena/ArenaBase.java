@@ -1,6 +1,6 @@
 package me.exerosis.gameengine.arena;
 
-import me.exerosis.gameengine.component.game.events.GameEndEvent;
+import me.exerosis.gameengine.game.events.GameEndEvent;
 import me.exerosis.gameengine.component.player.events.PlayerComponentCanJoinEvent;
 import me.exerosis.gameengine.component.player.events.PlayerComponentJoinEvent;
 import org.apache.commons.lang.Validate;
@@ -14,6 +14,7 @@ import org.bukkit.plugin.Plugin;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Durpped in to existence by Exerosis on 3/17/2016.
@@ -47,6 +48,8 @@ public abstract class ArenaBase implements Arena, Listener {
     protected boolean startGame(Game game)
     {
         Validate.notNull(game, "Game cannot be null!");
+
+        Objects.requireNonNull()
 
         if (this.game != null)
             return false;

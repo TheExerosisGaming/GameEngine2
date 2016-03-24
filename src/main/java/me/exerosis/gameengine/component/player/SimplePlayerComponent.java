@@ -30,7 +30,7 @@ public class SimplePlayerComponent implements PlayerComponent {
     @Override
     public boolean addPlayer(Player player)
     {
-        if (!filter(player))
+        if (!test(player))
         {
             Bukkit.getPluginManager().callEvent(new PlayerComponentJoinEvent(this, player));
             players.add(player);
@@ -42,7 +42,7 @@ public class SimplePlayerComponent implements PlayerComponent {
     @Override
     public boolean removePlayer(Player player)
     {
-        if (filter(player))
+        if (test(player))
         {
             Bukkit.getPluginManager().callEvent(new PlayerComponentQuitEvent(this, player));
             players.remove(player);
