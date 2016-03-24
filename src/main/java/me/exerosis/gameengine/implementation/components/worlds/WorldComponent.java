@@ -1,4 +1,4 @@
-package me.exerosis.gameengine.implementation.components;
+package me.exerosis.gameengine.implementation.components.worlds;
 
 import me.exerosis.gameengine.component.ComponentBase;
 import me.exerosis.gameengine.implementation.components.scheduler.SchedulerComponent;
@@ -39,7 +39,7 @@ public class WorldComponent extends ComponentBase {
         worldCreator.type(WorldType.FLAT);
         Bukkit.createWorld(worldCreator);
 
-        System.out.println("[WorldComponent]World can be loaded. Loading world.");
+        System.out.println("[WorldComponent]WorldWrapper can be loaded. Loading world.");
     }
 
     private void tryUnload(String worldName, String kickMessage, Runnable runWhenUnloaded) {
@@ -57,7 +57,6 @@ public class WorldComponent extends ComponentBase {
 
         //Wait 1 second before unloading the world
         schedulerComponent.registerTask(() -> {
-            schedulerComponent.getTaskData(this).setDelay(4L);
             if (!Bukkit.unloadWorld(world, false))
                 throw new RuntimeException("[WorldComponent]Unable to unload world, please fix the problem!");
             runWhenUnloaded.run();
