@@ -5,6 +5,8 @@ import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
@@ -13,13 +15,13 @@ import java.util.concurrent.ScheduledExecutorService;
  */
 public class Main extends JavaPlugin {
 
-    private static final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(10);
+
     private static Main plugin;
 
     public static void main(String[] args)
     {
-        Countdown countdown = new Countdown(scheduler, Main::test, 10);
-        countdown.start();
+        Map<String, String> map = new HashMap<>();
+        System.out.println(map.get("test"));
     }
 
     public static void test()
