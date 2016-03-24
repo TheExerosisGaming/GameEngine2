@@ -1,10 +1,10 @@
-package me.exerosis.gameengine.component.gamestate;
+package me.exerosis.gameengine.game.gamestate;
 
 import me.exerosis.gameengine.Main;
 import me.exerosis.gameengine.component.Component;
-import me.exerosis.gameengine.component.game.GameComponent;
-import me.exerosis.gameengine.component.game.events.GameEndEvent;
-import me.exerosis.gameengine.component.gamestate.events.GameStateChangeEvent;
+import me.exerosis.gameengine.game.GameComponent;
+import me.exerosis.gameengine.game.events.GameEndEvent;
+import me.exerosis.gameengine.game.gamestate.events.GameStateChangeEvent;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 

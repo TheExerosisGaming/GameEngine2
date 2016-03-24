@@ -1,4 +1,4 @@
-package me.exerosis.gameengine.common.utils;
+package me.exerosis.gameengine.common.item;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;

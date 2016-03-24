@@ -1,6 +1,6 @@
 package me.exerosis.gameengine.arena;
 
-import me.exerosis.gameengine.component.game.events.GameEndEvent;
+import me.exerosis.gameengine.game.events.GameEndEvent;
 import me.exerosis.gameengine.component.player.events.PlayerComponentCanJoinEvent;
 import me.exerosis.gameengine.component.player.events.PlayerComponentJoinEvent;
 import org.apache.commons.lang.Validate;

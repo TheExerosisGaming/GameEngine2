@@ -1,4 +1,4 @@
-package me.exerosis.gameengine.component.gamestate;
+package me.exerosis.gameengine.game.gamestate;
 
 /**
  * Durpped in to existence by Exerosis on 3/20/2016.

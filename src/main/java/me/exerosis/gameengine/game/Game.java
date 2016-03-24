@@ -1,4 +1,4 @@
-package me.exerosis.gameengine.component.game;
+package me.exerosis.gameengine.game;
 
 /**
  * Durpped in to existence by Exerosis on 3/18/2016.

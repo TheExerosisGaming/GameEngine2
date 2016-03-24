@@ -1,7 +1,7 @@
-package me.exerosis.gameengine.component.game;
+package me.exerosis.gameengine.game;
 
-import me.exerosis.gameengine.component.game.events.GameEndEvent;
-import me.exerosis.gameengine.component.game.events.GameStartEvent;
+import me.exerosis.gameengine.game.events.GameEndEvent;
+import me.exerosis.gameengine.game.events.GameStartEvent;
 import org.apache.commons.lang.Validate;
 import org.bukkit.Bukkit;
 

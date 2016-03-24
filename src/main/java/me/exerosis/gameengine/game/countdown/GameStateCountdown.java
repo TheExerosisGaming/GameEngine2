@@ -1,8 +1,9 @@
-package me.exerosis.gameengine.component.countdown;
+package me.exerosis.gameengine.game.countdown;
 
 import me.exerosis.gameengine.common.playerholder.PlayerHolder;
-import me.exerosis.gameengine.component.gamestate.GameState;
-import me.exerosis.gameengine.component.gamestate.GameStateComponent;
+import me.exerosis.gameengine.component.countdown.CountdownBase;
+import me.exerosis.gameengine.game.gamestate.GameState;
+import me.exerosis.gameengine.game.gamestate.GameStateComponent;
 import org.bukkit.ChatColor;
 
 import java.util.concurrent.ScheduledExecutorService;
